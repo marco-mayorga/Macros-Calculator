@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macros Calculator</title>
+    <link rel="stylesheet" href="/main.css">
+    <script src="/script.js"></script>
+    <script src="/classes.js"></script>
+</head>
+
+<body>
+    <form action="">
+        <div class="choice">
+            <p>Gender:</p>
+            <input type="radio" id="gender_Male" name="gender" value="Male" required>
+            <label for="Male">Male</label>
+            <input type="radio" id="gender_female" name="gender" value="Female" required>
+            <label for="female">Female</label>
+        </div>
+        <div class="choice">
+            <p>Weight</p>
+            <label for="weight"></label>
+            <input type="number" min="0" id="weight" name="weight" value="" required>
+        </div>
+        <div class="choice">
+            <p>Height</p>
+            <label for="height"></label>
+            <input type="number" min="0" id="height-ft" name="height-ft" value="" required>
+            <input type="number" min="0" id="height-in" name="height-in" value="" required>
+
+        </div>
+        <div class="choice">
+            <p>Age (ages 18 - 80)</p>
+            <label for="age"></label>
+            <input type="number" min="0" max="80" id="age" name="age" value="" required>
+        </div>
+        <div class="choice">
+            <p>Activity Level</p>
+            <select id="activity-level" name="activity-level" required>
+                <option disabled selected value> -- select an option -- </option>
+                <option value="1.2"> Sedentary </option>
+                <option value="1.375"> Lightly active </option>
+                <option value="1.55"> Moderately active </option>
+                <option value="1.725"> Active </option>
+                <option value="1.9"> Very active </option>
+            </select>
+        </div>
+        <div class="choice">
+            <p>Goal</p>
+            <label for="goal"></label>
+            <select name="goal" id="goal">
+                <option disabled selected value> -- select an option -- </option>
+                <option value="">Lose Weight</option>
+                <option value="">Maintain Weight</option>
+                <option value="">Gain Weight</option>
+            </select>
+        </div>
+        <div class="choice">
+            <label for="calculate-btn"></label>
+            <input type="submit" id="calculate-btn">
+        </div>
+    </form>
+</body>
+
+</html>
