@@ -30,15 +30,36 @@ export function maleTDEE(weight, height, age, activityLevel) {
 
 
 
-export function macros(tdee) {
+export function macros(tdee, weight) {
 
     /* 
     1g of protein = 4 cals
-    1g of carbs = 4 cals
+        .825 of protein per pound is recommended
     1g of fats = 9cals
+        25% of cals is reccommended
+    1g of carbs = 4 cals
+        the rest of the calories is aloccated to this
     */
+    let weightInPounds = parseFloat(weight.value);
 
-    let protein = null;
-    let fats = null;
-    let carbs = null;
+    // Cals and grams of protein
+    let gramsOfProtein = weightInPounds * .825;
+    let proteinCals = gramsOfProtein * 4;
+
+    // Cals and grams of fat
+    let fatCals = (tdee * .25);
+    let gramsOfFats = fatCals / 9;
+
+    // cals and grams of carbs
+    let CarbCals = tdee - fatCals - proteinCals
+    let gramsOfCarbs = CarbCals / 4;
+
+    let macros = {
+        protein: gramsOfProtein,
+        fats: gramsOfFats,
+        carbs: gramsOfCarbs,
+    }
+
+    return macros;
+
 }
