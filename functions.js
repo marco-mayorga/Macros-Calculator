@@ -42,7 +42,7 @@ export function macros(tdee, weight) {
         the rest of the calories is aloccated to this
     */
 
-    let weightInPounds = parseFloat(weight.value);
+    let weightInPounds = parseFloat(weight);
 
     // Cals and grams of protein
     let gramsOfProtein = weightInPounds * .825;
@@ -57,11 +57,20 @@ export function macros(tdee, weight) {
     let gramsOfCarbs = CarbCals / 4;
 
     let macros = {
-        protein: gramsOfProtein,
-        fats: gramsOfFats,
-        carbs: gramsOfCarbs,
+        tdee: tdee,
+        protein: Math.round(gramsOfProtein),
+        fats: Math.round(gramsOfFats),
+        carbs: Math.round(gramsOfCarbs),
     }
-
     return macros;
+}
 
+export function macrosInfoFunc(macros) {
+    const macrosInfo = document.createElement("div");
+    macrosInfo.id = "macros-info";
+    macrosInfo.innerHTML = JSON.stringify(macros);
+    console.log(macros)
+
+    const currentDiv = document.getElementById("form");
+    document.body.insertBefore(macrosInfo, currentDiv)
 }
