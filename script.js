@@ -33,12 +33,12 @@ calculateBtn.addEventListener("click", () => {
 
             let maleWeightLossTdee = maleCals - caloriesToSubtract;
 
-            macros(maleWeightLossTdee)
+            macros(maleWeightLossTdee, weight.value)
 
 
         } else if (goal.value === "Maintain Weight") {
 
-            macros(maleCals);
+            macros(maleCals, weight.value);
 
         } else if (goal.value === "Gain Weight") {
             // The .20 is a 20% calorie surplus
@@ -46,7 +46,7 @@ calculateBtn.addEventListener("click", () => {
 
             let maleWeightLossTdee = maleCals + caloriesToAdd;
 
-            macros(maleWeightLossTdee)
+            macros(maleWeightLossTdee, weight.value)
 
         }
 
@@ -65,12 +65,12 @@ calculateBtn.addEventListener("click", () => {
 
             let femaleWeightLossTdee = femaleCals - caloriesToSubtract;
 
-            macros(femaleWeightLossTdee)
+            macros(femaleWeightLossTdee, weight.value)
 
 
         } else if (goal.value === "Maintain Weight") {
 
-            macros(femaleCals);
+            macros(femaleCals, weight.value);
 
         } else if (goal.value === "Gain Weight") {
 
@@ -80,7 +80,7 @@ calculateBtn.addEventListener("click", () => {
 
             let femaleWeightLossTdee = femaleCals + caloriesToAdd;
 
-            macros(femaleWeightLossTdee)
+            macros(femaleWeightLossTdee, weight.value)
 
         }
 
