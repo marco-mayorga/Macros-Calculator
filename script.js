@@ -11,20 +11,24 @@ const activityLevel = document.getElementById('activity-level');
 const goal = document.getElementById('goal');
 const calculateBtn = document.getElementById('calculate-btn');
 
-// convert everything to metric
-let heightInCentimeters = heightToMetric(heightFt.value, heightIn.value);
-let weightInKg = weightToMetric(weight.value);
 
-// Turns strings to float
-let ageFloat = parseFloat(age.value);
-let activityLevelFloat = parseFloat(activityLevel.value);
 
 
 calculateBtn.addEventListener("click", () => {
+    /*  ON button click */
+    // convert everything to metric
+    let heightInCentimeters = heightToMetric(heightFt.value, heightIn.value);
+    let weightInKg = weightToMetric(weight.value);
+
+    // Turns strings to float
+    let ageFloat = parseFloat(age.value);
+    let activityLevelFloat = parseFloat(activityLevel.value);
+
+
     // Checks if male or female is chosen
     if (male.checked) {
 
-        let maleCals = maleTDEE(weightInKg, heightInCentimeters, ageFloat, activityLevelFloat);
+        let maleCals = Math.round(maleTDEE(weightInKg, heightInCentimeters, ageFloat, activityLevelFloat));
         alert(maleCals)
 
         if (goal.value === "Lose Weight") {
