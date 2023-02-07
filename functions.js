@@ -18,7 +18,7 @@ export function weightToMetric(weight) {
 export function femaleTDEE(weight, height, age, activityLevel) {
     // This is the Mifflin-St Jeor Equation multiplied by activitylevel to get the Tdee
     // Tdee is the total daily energy expenditure of a person
-    let tdee = activityLevel * (10 * weight) + (6.25 * height) - (5 * age) - 161;
+    let tdee = activityLevel * ((10 * weight) + (6.25 * height) - (5 * age) - 161);
     return tdee;
 }
 
