@@ -1,4 +1,4 @@
-import { heightToMetric, weightToMetric, maleTDEE, femaleTDEE, macros } from "./functions.js"
+import { heightToMetric, weightToMetric, maleTDEE, femaleTDEE, macros, macrosInfoFunc } from "./functions.js"
 
 // Getting all the divs
 const male = document.getElementById('gender_Male');
@@ -15,11 +15,11 @@ const calculateBtn = document.getElementById('calculate-btn');
 
 
 calculateBtn.addEventListener("click", () => {
-    /*  ON button click */
+
+    /*  Instantiate on button click */
     // convert everything to metric
     let heightInCentimeters = heightToMetric(heightFt.value, heightIn.value);
     let weightInKg = weightToMetric(weight.value);
-
     // Turns strings to float
     let ageFloat = parseFloat(age.value);
     let activityLevelFloat = parseFloat(activityLevel.value);
@@ -28,72 +28,68 @@ calculateBtn.addEventListener("click", () => {
     // Checks if male or female is chosen
     if (male.checked) {
 
-        let maleCals = Math.round(maleTDEE(weightInKg, heightInCentimeters, ageFloat, activityLevelFloat));
-        alert(maleCals)
+        let cals = Math.round(maleTDEE(weightInKg, heightInCentimeters, ageFloat, activityLevelFloat));
+        alert(cals)
 
         if (goal.value === "Lose Weight") {
             // The .20 is a 20% calorie deficit
-            let caloriesToSubtract = maleCals * .20;
+            let caloriesToSubtract = cals * .20;
+            let weightLossTdee = cals - caloriesToSubtract;
 
-            let maleWeightLossTdee = maleCals - caloriesToSubtract;
-
-            macros(maleWeightLossTdee, weight.value)
-
+            let macrosInGrams = macros(weightLossTdee, weight.value)
+            // Creates divs with all the info available
+            macrosInfoFunc(macrosInGrams);
 
         } else if (goal.value === "Maintain Weight") {
 
-            macros(maleCals, weight.value);
+            let macrosInGrams = macros(cals, weight.value);
+
+            // Creates divs with all the info available
+            macrosInfoFunc(macrosInGrams);
 
         } else if (goal.value === "Gain Weight") {
             // The .20 is a 20% calorie surplus
-            let caloriesToAdd = maleCals * .20;
+            let caloriesToAdd = cals * .20;
+            let weightgainTdee = cals + caloriesToAdd;
 
-            let maleWeightLossTdee = maleCals + caloriesToAdd;
+            let macrosInGrams = macros(weightgainTdee, weight.value)
 
-            macros(maleWeightLossTdee, weight.value)
-
+            // Creates divs with all the info available
+            macrosInfoFunc(macrosInGrams);
         }
-
-
-
 
 
 
     } else if (female.checked) {
 
-        let femaleCals = Math.round(femaleTDEE(weightInKg, heightInCentimeters, ageFloat, activityLevelFloat));
-        alert(femaleCals)
+        let cals = Math.round(femaleTDEE(weightInKg, heightInCentimeters, ageFloat, activityLevelFloat));
+        alert(cals)
 
         if (goal.value === "Lose Weight") {
             // The .20 is a 20% calorie deficit
-            let caloriesToSubtract = femaleCals * .20;
+            let caloriesToSubtract = cals * .20;
+            let weightLossTdee = cals - caloriesToSubtract;
 
-            let femaleWeightLossTdee = femaleCals - caloriesToSubtract;
-
-            macros(femaleWeightLossTdee, weight.value)
-
+            let macrosInGrams = macros(weightLossTdee, weight.value)
+            // Creates divs with all the info available
+            macrosInfoFunc(macrosInGrams);
 
         } else if (goal.value === "Maintain Weight") {
 
-            macros(femaleCals, weight.value);
+            let macrosInGrams = macros(cals, weight.value);
+
+            // Creates divs with all the info available
+            macrosInfoFunc(macrosInGrams);
 
         } else if (goal.value === "Gain Weight") {
-
             // The .20 is a 20% calorie surplus
+            let caloriesToAdd = cals * .20;
+            let weightgainTdee = cals + caloriesToAdd;
 
-            let caloriesToAdd = femaleCals * .20;
+            let macrosInGrams = macros(weightgainTdee, weight.value)
 
-            let femaleWeightLossTdee = femaleCals + caloriesToAdd;
-
-            macros(femaleWeightLossTdee, weight.value)
-
+            // Creates divs with all the info available
+            macrosInfoFunc(macrosInGrams);
         }
-
-
-
-
-
-
-
     }
 })
