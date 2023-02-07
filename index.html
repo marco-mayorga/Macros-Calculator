@@ -7,17 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Macros Calculator</title>
     <link rel="stylesheet" href="/main.css">
-    <script src="/script.js"></script>
-    <script src="/classes.js"></script>
+    <script type="module" src="/script.js"></script>
 </head>
 
 <body>
     <form action="">
         <div class="choice">
             <p>Gender:</p>
-            <input type="radio" id="gender_Male" name="gender" value="Male" required>
+            <input type="radio" id="gender_Male" name="gender" value="Male" checked>
             <label for="Male">Male</label>
-            <input type="radio" id="gender_female" name="gender" value="Female" required>
+            <input type="radio" id="gender_Female" name="gender" value="Female">
             <label for="female">Female</label>
         </div>
         <div class="choice">
@@ -29,7 +28,7 @@
             <p>Height</p>
             <label for="height"></label>
             <input type="number" min="0" id="height-ft" name="height-ft" value="" required>
-            <input type="number" min="0" id="height-in" name="height-in" value="" required>
+            <input type="number" min="0" max="11" id="height-in" name="height-in" value="" required>
 
         </div>
         <div class="choice">
@@ -51,16 +50,15 @@
         <div class="choice">
             <p>Goal</p>
             <label for="goal"></label>
-            <select name="goal" id="goal">
+            <select id="goal" name="goal">
                 <option disabled selected value> -- select an option -- </option>
-                <option value="">Lose Weight</option>
-                <option value="">Maintain Weight</option>
-                <option value="">Gain Weight</option>
+                <option value="Lose Weight">Lose Weight</option>
+                <option value="Maintain Weight">Maintain Weight</option>
+                <option value="Gain Weight">Gain Weight</option>
             </select>
         </div>
         <div class="choice">
-            <label for="calculate-btn"></label>
-            <input type="submit" id="calculate-btn">
+            <button type="submit" id="calculate-btn">Calculate!</button>
         </div>
     </form>
 </body>
