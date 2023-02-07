@@ -61,7 +61,8 @@ calculateBtn.addEventListener("click", () => {
 
     } else if (female.checked) {
 
-        let femaleCals = femaleTDEE(weightInKg, heightInCentimeters, ageFloat, activityLevelFloat);
+        let femaleCals = Math.round(femaleTDEE(weightInKg, heightInCentimeters, ageFloat, activityLevelFloat));
+        alert(femaleCals)
 
         if (goal.value === "Lose Weight") {
             // The .20 is a 20% calorie deficit
